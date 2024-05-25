@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EMS</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        body {
+            padding-top: 70px; /* Add space for fixed navbar */
+        }
+        .form-container {
+            max-width: 500px;
+            margin: auto;
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" th:href="@{/}">EMS</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container form-container">
+    <div class="row">
+        <div class="col-md-12">
+
+            <div th:if="${param.success}">
+                <div class="alert alert-info">Uspješno ste se registrirali!</div>
+            </div>
+
+            <h1 class="text-center">Registracija</h1>
+
+            <form th:action="@{/registration}" method="post" th:object="${user}">
+                <div class="form-group">
+                    <label class="control-label" for="firstName">Ime</label>
+                    <input id="firstName" placeholder="Unesite vaše ime" class="form-control" th:field="*{firstName}" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="lastName">Prezime</label>
+                    <input id="lastName" placeholder="Unesite vaše prezime" class="form-control" th:field="*{lastName}" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="email">Email</label>
+                    <input id="email" placeholder="Unesite vašu email adresu" class="form-control" th:field="*{email}" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="password">Lozinka</label>
+                    <input id="password" placeholder="Unesite vašu lozinku" class="form-control" type="password" th:field="*{password}" required />
+                </div>
+
+                <div class="form-group text-center">
+                    <button type="submit" class="btn btn-primary">Registriraj se</button>
+                </div>
+
+                <div class="form-group text-center">
+                    <span>Registrirani ste? <a href="/" th:href="@{/login}">Prijavite se ovdje</a></span>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-I6l9dI6J9GfE5S+cww+wKNQv/yRfM5BO+Y5EW5Y5Xxg+cs42BwC5p7GV5TAF5m/t" crossorigin="anonymous"></script>
+</body>
+</html>
